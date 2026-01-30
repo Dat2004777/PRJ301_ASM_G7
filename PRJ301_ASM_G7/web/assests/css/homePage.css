@@ -1,0 +1,24 @@
+/* header start */
+.logo-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+/* header end */
+
+/* slider start */
+.slider img {
+    object-fit: cover;
+    height: 400px;
+}
+/* slider end */
+
+/* content start */
+.content p {
+    text-align: justify;
+    line-height: 40px;
+    letter-spacing: 2px;
+}
+/* content end */
+
+
