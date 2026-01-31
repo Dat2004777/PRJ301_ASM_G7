@@ -21,10 +21,16 @@
 
         <!-- slider start-->
         <section class="slider">
-            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="d-block w-100" src="${pageContext.request.contextPath}/assests/img/Slider1.jpg" alt="First slide">
+                    <img class="d-block w-100" src="${pageContext.request.contextPath}/assests/img/slider1.jpg" alt="First slide">
+                    </div>
+                    <div class="carousel-item">
+                    <img class="d-block w-100" src="${pageContext.request.contextPath}/assests/img/slider2.jpg" alt="Second slide">
+                    </div>
+                    <div class="carousel-item">
+                    <img class="d-block w-100" src="${pageContext.request.contextPath}/assests/img/slider3.jpg" alt="Third slide">
                     </div>
                 </div>
             </div>

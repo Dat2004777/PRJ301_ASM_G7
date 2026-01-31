@@ -16,7 +16,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto fs-4">
-                <li class="nav-item"><a class="nav-link text-white" href="#!">Trang chủ</a></li>
+                <li class="nav-item"><a class="nav-link active" href="#!">Trang chủ</a></li>
                 <li class="nav-item"><a class="nav-link" href="#!">Đặt chỗ</a></li>
                 <li class="nav-item me-2"><a class="nav-link" href="#!">Mua vé</a></li>
                 <div class="d-xl-flex align-items-center">
@@ -24,7 +24,7 @@
                         <a class="btn btn-outline-light rounded-3 w-100" href="#!">Đăng nhập</a>
                     </div>
                     <div class="my-2 my-xl-0">
-                        <a class="btn btn-secondary px-4 rounded-3 w-100" href="#!">Đăng ký</a>
+                        <a class="btn btn-dark px-4 rounded-3 w-100" href="#!">Đăng ký</a>
                     </div>
                 </div>
             </ul>
