@@ -20,12 +20,28 @@
                 <li class="nav-item"><a class="nav-link" href="#!">Đặt chỗ</a></li>
                 <li class="nav-item me-2"><a class="nav-link" href="#!">Mua vé</a></li>
                 <div class="d-xl-flex align-items-center">
+                    <!-- login signup -->
+
                     <div class="me-xl-2 my-2 my-xl-0">
                         <a class="btn btn-outline-light rounded-3 w-100" href="#!">Đăng nhập</a>
                     </div>
                     <div class="my-2 my-xl-0">
                         <a class="btn btn-dark px-4 rounded-3 w-100" href="#!">Đăng ký</a>
                     </div>
+
+                    <!-- login signup -->
+
+                    <!-- user signed -->
+                     
+                    <!-- <div class="d-flex flex-column align-items-end">
+                        <h5 class="text-dark mb-0">Nguyễn Thành Đạt</h5>
+                        <button class="bg-primary border border-0 text-white fs-6">Đăng xuất</button>
+                    </div>
+                    <div class="ms-2">
+                        <img class="avt-img" src="${pageContext.request.contextPath}/assests/img/avt.jpg" alt="avatar">
+                    </div> -->
+
+                    <!-- user signed -->
                 </div>
             </ul>
         </div>
