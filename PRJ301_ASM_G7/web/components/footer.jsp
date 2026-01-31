@@ -5,7 +5,7 @@
 
 <!-- footer start -->
 <footer class="mx-0 bg-primary text-white">
-    <div class="d-flex justify-content-evenly fs-5 row row-cols-1 row-cols-xxl-5">
+    <div class="container-fluid d-flex justify-content-evenly fs-5 row row-cols-1 row-cols-xxl-5 text-center">
         <div class="d-flex flex-column align-items-center mt-5 ms-1 col">
             <h3>Về Chúng Tôi</h3>
             <a class="link-info link-underline link-underline-opacity-0 mt-2" href="#!">Bảng Giá</a>
