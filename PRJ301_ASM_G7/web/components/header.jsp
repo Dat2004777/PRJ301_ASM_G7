@@ -24,7 +24,7 @@
                         <a class="btn btn-outline-light rounded-3 w-100" href="#!">Đăng nhập</a>
                     </div>
                     <div class="my-2 my-xl-0">
-                        <a class="btn btn-secondary px-4 rounded-3 w-100" href="#!">Đăng ký</a>
+                        <a class="btn btn-dark px-4 rounded-3 w-100" href="#!">Đăng ký</a>
                     </div>
                 </div>
             </ul>
