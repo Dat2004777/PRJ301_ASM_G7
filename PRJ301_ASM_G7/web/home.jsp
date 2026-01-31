@@ -72,5 +72,7 @@
         <!-- footer start -->
         <%@include file="components/footer.jsp" %>
         <!-- footer end -->
+
+        <script src="${pageContext.request.contextPath}/assests/js/bootstrap.min.js"></script>
     </body>
 </html>
