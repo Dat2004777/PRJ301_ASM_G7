@@ -57,7 +57,7 @@
                 </div>
             </div>
 
-            <div class="row align-items-center g-5 mb-5">
+            <div class="row align-items-center g-5 mb-5 flex-column-reverse flex-xl-row">
                 <div class="col-12 col-xl-6">
                     <h3>Tối ưu không gian - Nâng tầm trải nghiệm</h3>
                     <p class="fs-5">
