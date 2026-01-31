@@ -1,0 +1,15 @@
+/* slider start */
+.slider img {
+    object-fit: cover;
+    height: 400px;
+}
+/* slider end */
+
+/* content start */
+.content p {
+    text-align: justify;
+    line-height: 40px;
+}
+/* content end */
+
+
