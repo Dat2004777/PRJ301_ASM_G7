@@ -12,6 +12,14 @@
         <servlet-name>ListSite</servlet-name>
         <servlet-class>controller.site.ListSite</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DetailSite</servlet-name>
+        <servlet-class>controller.site.DetailSite</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteSite</servlet-name>
+        <servlet-class>controller.site.DeleteSite</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddSite</servlet-name>
         <url-pattern>/add-site</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>ListSite</servlet-name>
         <url-pattern>/list-site</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DetailSite</servlet-name>
+        <url-pattern>/site-detail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteSite</servlet-name>
+        <url-pattern>/delete-site</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>home.jsp</welcome-file>

@@ -18,8 +18,9 @@ public class SiteDAO extends DBContext {
     
     private PreparedStatement ps;
     private ResultSet rs;
-
+    
     public SiteDAO() {
+        
     }
     
     public void create() {

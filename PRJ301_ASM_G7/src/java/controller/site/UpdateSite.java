@@ -10,6 +10,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.ParkingSite;
+import test.ParkingSiteFakeDB;
 
 /**
  *
@@ -43,47 +45,69 @@ public class UpdateSite extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        ParkingSiteFakeDB siteDAO = new ParkingSiteFakeDB();
         
+        String id = request.getParameter("id");
+        ParkingSite site = siteDAO.getById(id);
         
+        if (site == null) {
+            response.sendRedirect("site-list");
+            return;
+        }
+
+        request.setAttribute("site", site);
         request.getRequestDispatcher("/manager/update-site.jsp").forward(request, response);
-    
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    // doPost: Xử lý dữ liệu form gửi về để cập nhật vào DB
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        // 1. Cực kỳ quan trọng: Set Tiếng Việt để không bị lỗi font
+        request.setCharacterEncoding("UTF-8");
+        ParkingSiteFakeDB siteDAO = new ParkingSiteFakeDB();
+        try {
+            // 2. Lấy dữ liệu từ form (khớp với name="" trong thẻ input/select)
+            String id = request.getParameter("siteId"); // Input hidden
+            String name = request.getParameter("siteName");
+            String address = request.getParameter("address");
+            String regionStr = request.getParameter("region"); // Nhận về "NORTH", "SOUTH"...
+            String statusStr = request.getParameter("status"); // Nhận về "ACTIVE", "CLOSED"...
+
+            // 3. Chuyển đổi String sang Enum
+            // Hàm valueOf() sẽ tìm Enum có tên khớp với chuỗi truyền vào
+            ParkingSite.Region region = ParkingSite.Region.valueOf(regionStr);
+            ParkingSite.Status status = ParkingSite.Status.valueOf(statusStr);
+
+            // 4. Tạo đối tượng mới với thông tin đã sửa
+            // Lưu ý: ManagerId tạm thời để null hoặc giữ nguyên logic cũ tùy bạn
+            ParkingSite updatedSite = new ParkingSite(
+                id, 
+                name, 
+                address, 
+                region, 
+                status, 
+                null // Manager ID
+            );
+
+            // 5. Gọi FakeDB để update
+            siteDAO.update(updatedSite);
+
+            // 6. Thành công -> Quay về trang danh sách
+            response.sendRedirect("list-site");
+
+        } catch (IllegalArgumentException e) {
+            // Xử lý lỗi nếu Enum không tồn tại (hack form)
+            e.printStackTrace();
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Dữ liệu Enum không hợp lệ");
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Lỗi hệ thống");
+        }
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
 }

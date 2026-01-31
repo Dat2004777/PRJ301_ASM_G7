@@ -15,9 +15,9 @@ public class ParkingSite {
     private String address;
     private Region region;
     private Status siteStatus;
-    private User managerId;
+    private Employee managerId;
 
-    public ParkingSite(String siteId, String siteName, String address, Region region, Status siteStatus, User managerId) {
+    public ParkingSite(String siteId, String siteName, String address, Region region, Status siteStatus, Employee managerId) {
         this.siteId = siteId;
         this.siteName = siteName;
         this.address = address;
@@ -66,15 +66,14 @@ public class ParkingSite {
         this.siteStatus = siteStatus;
     }
 
-    public User getManagerId() {
+    public Employee getManagerId() {
         return managerId;
     }
 
-    public void setManagerId(User managerId) {
+    public void setManagerId(Employee managerId) {
         this.managerId = managerId;
     }
-    
-    
+
     public enum Region {
         NORTH("Miền Bắc"),
         MIDDLE("Miền Trung"),
@@ -85,18 +84,28 @@ public class ParkingSite {
         Region(String label) {
             this.label = label;
         }
+
+        public String getLabel() {
+            return label;
+        }
+
     }
 
     public enum Status {
         ACTIVE("Đang hoạt động"),
         MAINTERNANCE("Bảo trì"),
         CLOSED("Đóng cửa");
-        
+
         private String label;
 
         private Status(String label) {
             this.label = label;
         }
+
+        public String getLabel() {
+            return label;
+        }
+
     }
 
 }

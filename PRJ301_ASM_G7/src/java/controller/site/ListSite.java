@@ -10,6 +10,9 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
+import model.ParkingSite;
+import test.ParkingSiteFakeDB;
 
 /**
  *
@@ -56,8 +59,12 @@ public class ListSite extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        request.getRequestDispatcher("/manager/list-site.jsp").forward(request, response);
+        ParkingSiteFakeDB siteDAO = new ParkingSiteFakeDB();
+        List<ParkingSite> siteList = siteDAO.getAll();
         
+        request.setAttribute("siteList", siteList);
+        
+        request.getRequestDispatcher("/manager/list-site.jsp").forward(request, response);
     }
 
     /**
