@@ -7,7 +7,7 @@
 <!-- navbar start -->
 <nav class="navbar navbar-expand-xl navbar-dark bg-primary">
     <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="home.html">
+        <a class="navbar-brand d-flex align-items-center" href="#!">
             <img class="logo-img" src="../assests/img/logoWebsite.jpg" alt="logoImage" />
             <h2 class="ms-2 mb-0">DMH Parking</h2>
         </a>
@@ -16,15 +16,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto fs-4">
-                <li class="nav-item"><a class="nav-link text-white" href="home.html">Trang chủ</a></li>
-                <li class="nav-item"><a class="nav-link" href="#experience">Đặt chỗ</a></li>
-                <li class="nav-item me-2"><a class="nav-link" href="#projects">Mua vé</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#!">Trang chủ</a></li>
+                <li class="nav-item"><a class="nav-link" href="#!">Đặt chỗ</a></li>
+                <li class="nav-item me-2"><a class="nav-link" href="#!">Mua vé</a></li>
                 <div class="d-xl-flex align-items-center">
                     <div class="me-xl-2 my-2 my-xl-0">
-                        <a class="btn btn-outline-light rounded-3 w-100" href="#">Đăng nhập</a>
+                        <a class="btn btn-outline-light rounded-3 w-100" href="#!">Đăng nhập</a>
                     </div>
                     <div class="my-2 my-xl-0">
-                        <a class="btn btn-secondary px-4 rounded-3 w-100">Đăng ký</a>
+                        <a class="btn btn-secondary px-4 rounded-3 w-100" href="#!">Đăng ký</a>
                     </div>
                 </div>
             </ul>
