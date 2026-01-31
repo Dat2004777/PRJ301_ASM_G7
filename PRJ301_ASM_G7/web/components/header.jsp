@@ -8,7 +8,7 @@
 <nav class="navbar navbar-expand-xl navbar-dark bg-primary">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center" href="#!">
-            <img class="logo-img" src="../assests/img/logoWebsite.jpg" alt="logoImage" />
+            <img class="logo-img" src="${pageContext.request.contextPath}/assests/img/logoWebsite.jpg" alt="logoImage" />
             <h2 class="ms-2 mb-0">DMH Parking</h2>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
