@@ -42,8 +42,8 @@
                     <div class="profile-subtitle">Mã nhân viên: #${emp.employeeId}</div>
                 </div>
                 <div class="action-btns">
-                    <a href="employee-update?id=${emp.employeeId}" class="btn-edit">✏️ Sửa</a>
-                    <a href="employee-delete?id=${emp.employeeId}" class="btn-del" onclick="return confirm('Xóa nhân viên này?')">🗑️ Xóa</a>
+                    <a href="update-employee?id=${emp.employeeId}" class="btn-edit">✏️ Sửa</a>
+                    <a href="update-employee?id=${emp.employeeId}" class="btn-del" onclick="return confirm('Xóa nhân viên này?')">🗑️ Xóa</a>
                 </div>
             </div>
 
@@ -80,7 +80,7 @@
                 </div>
             </div>
 
-            <a href="employee-list" class="back-link">← Quay lại danh sách</a>
+            <a href="list-employee" class="back-link">← Quay lại danh sách</a>
         </div>
     </div>
 </body>

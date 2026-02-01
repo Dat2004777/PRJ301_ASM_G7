@@ -47,7 +47,7 @@
 
         <div class="grid-container">
             <c:forEach items="${listEmployee}" var="e">
-                <div class="emp-card" onclick="location.href='employee-detail?id=${e.employeeId}'">
+                <div class="emp-card" onclick="location.href='detail-employee?id=${e.employeeId}'">
                     <img src="https://ui-avatars.com/api/?name=${e.lastName}+${e.firstName}&background=random&size=128" 
                          alt="Avatar" class="emp-avatar">
                     
