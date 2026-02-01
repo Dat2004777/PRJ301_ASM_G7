@@ -103,7 +103,6 @@
     </head>
 
     <body>
-        <%-- <jsp:include page="header.jsp" /> --%>
 
         <div class="main-container">
             <div class="form-card">
