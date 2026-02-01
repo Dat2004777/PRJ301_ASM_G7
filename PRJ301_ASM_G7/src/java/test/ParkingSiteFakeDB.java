@@ -1,31 +1,31 @@
-package test; 
+package test;
 
 import java.util.ArrayList;
 import java.util.List;
 import model.ParkingSite;
-import model.Employee; 
+import model.Employee;
 
 public class ParkingSiteFakeDB {
-    
+
     private static ParkingSiteFakeDB instance;
     private List<ParkingSite> parkingSites = new ArrayList<>();
-    
+
     public static ParkingSiteFakeDB getInstance() {
         if (instance == null) {
             instance = new ParkingSiteFakeDB();
         }
         return instance;
     }
-    
+
     private ParkingSiteFakeDB() {
-        
+
         parkingSites.add(new ParkingSite(
                 "SITE001",
                 "Bãi xe FPT Cầu Giấy",
                 "Số 10 Phạm Văn Bạch, Hà Nội",
                 ParkingSite.Region.NORTH,
                 ParkingSite.Status.ACTIVE,
-                new Employee("1", "Minh", "123")
+                null
         ));
 
         parkingSites.add(new ParkingSite(
@@ -34,7 +34,7 @@ public class ParkingSiteFakeDB {
                 "Khu đô thị FPT City, Đà Nẵng",
                 ParkingSite.Region.MIDDLE,
                 ParkingSite.Status.MAINTERNANCE,
-                new Employee("1", "Minh", "123")
+                null
         ));
 
         parkingSites.add(new ParkingSite(
@@ -43,7 +43,7 @@ public class ParkingSiteFakeDB {
                 "Khu công nghệ cao, TP.HCM",
                 ParkingSite.Region.SOUTH,
                 ParkingSite.Status.ACTIVE,
-                new Employee("1", "Minh", "123")
+                null
         ));
 
     }
