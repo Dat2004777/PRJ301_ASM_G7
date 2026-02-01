@@ -25,7 +25,7 @@
         <div class="form-card">
             <h2 class="form-title">Thêm nhân viên mới</h2>
 
-            <form action="employee-add" method="post">
+            <form action="add-employee" method="post">
                 
                 <div class="form-group">
                     <label class="form-label">Tài khoản liên kết (Account ID)</label>

@@ -42,7 +42,7 @@
     <div class="main-container">
         <div class="list-header">
             <h2 class="page-title">Quản lý nhân viên</h2>
-            <a href="employee-add" class="btn-add"><span>+</span> Thêm nhân viên</a>
+            <a href="add-employee" class="btn-add"><span>+</span> Thêm nhân viên</a>
         </div>
 
         <div class="grid-container">
