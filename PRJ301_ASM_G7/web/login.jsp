@@ -12,9 +12,9 @@
         <title>Login</title>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assests/css/bootstrap.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assests/css/main.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/assests/css/login.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assests/css/login_register.css" />
     </head>
-    <body class="bg-light d-flex align-items-center justify-content-center">
+    <body class="bg-light d-flex align-items-center justify-content-center min-vh-100 py-4">
         <div class="card login-card rounded-5 shadow p-3 p-md-5 w-100 mx-3">
 
             <!--Login header-->
