@@ -1,0 +1,20 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Feb 1, 2026, 7:08:20 PM
+    Author     : hieu
+*/
+body{
+    min-height: 100vh;
+}
+
+.login-card{
+    border: 4px solide #ccc;
+    max-width: 450px;
+}
+
+.bg-input{
+    background-color: #e0e0e0;
+}
