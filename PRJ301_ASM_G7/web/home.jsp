@@ -21,10 +21,16 @@
 
         <!-- slider start-->
         <section class="slider">
-            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="d-block w-100" src="${pageContext.request.contextPath}/assests/img/Slider1.jpg" alt="First slide">
+                    <img class="d-block w-100" src="${pageContext.request.contextPath}/assests/img/slider1.jpg" alt="First slide">
+                    </div>
+                    <div class="carousel-item">
+                    <img class="d-block w-100" src="${pageContext.request.contextPath}/assests/img/slider2.jpg" alt="Second slide">
+                    </div>
+                    <div class="carousel-item">
+                    <img class="d-block w-100" src="${pageContext.request.contextPath}/assests/img/slider3.jpg" alt="Third slide">
                     </div>
                 </div>
             </div>
@@ -51,7 +57,7 @@
                 </div>
             </div>
 
-            <div class="row align-items-center g-5 mb-5">
+            <div class="row align-items-center g-5 mb-5 flex-column-reverse flex-xl-row">
                 <div class="col-12 col-xl-6">
                     <h3>Tối ưu không gian - Nâng tầm trải nghiệm</h3>
                     <p class="fs-5">
