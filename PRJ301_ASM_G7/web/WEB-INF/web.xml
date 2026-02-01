@@ -20,6 +20,22 @@
         <servlet-name>DeleteSite</servlet-name>
         <servlet-class>controller.site.DeleteSite</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddEmployee</servlet-name>
+        <servlet-class>controller.employee.AddEmployee</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListEmployee</servlet-name>
+        <servlet-class>controller.employee.ListEmployee</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DetailEmployee</servlet-name>
+        <servlet-class>controller.employee.DetailEmployee</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteEmployee</servlet-name>
+        <servlet-class>controller.employee.DeleteEmployee</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddSite</servlet-name>
         <url-pattern>/add-site</url-pattern>
@@ -39,6 +55,22 @@
     <servlet-mapping>
         <servlet-name>DeleteSite</servlet-name>
         <url-pattern>/delete-site</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddEmployee</servlet-name>
+        <url-pattern>/add-employee</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListEmployee</servlet-name>
+        <url-pattern>/list-employee</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DetailEmployee</servlet-name>
+        <url-pattern>/detail-employee</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteEmployee</servlet-name>
+        <url-pattern>/delete-employee</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>home.jsp</welcome-file>

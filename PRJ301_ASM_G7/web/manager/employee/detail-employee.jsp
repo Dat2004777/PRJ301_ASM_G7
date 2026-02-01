@@ -43,7 +43,7 @@
                 </div>
                 <div class="action-btns">
                     <a href="update-employee?id=${emp.employeeId}" class="btn-edit">✏️ Sửa</a>
-                    <a href="update-employee?id=${emp.employeeId}" class="btn-del" onclick="return confirm('Xóa nhân viên này?')">🗑️ Xóa</a>
+                    <a href="delete-employee?id=${emp.employeeId}" class="btn-del" onclick="return confirm('Xóa nhân viên này?')">🗑️ Xóa</a>
                 </div>
             </div>
 
