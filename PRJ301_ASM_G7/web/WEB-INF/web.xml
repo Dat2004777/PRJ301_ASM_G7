@@ -36,6 +36,10 @@
         <servlet-name>DeleteEmployee</servlet-name>
         <servlet-class>controller.employee.DeleteEmployee</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateEmployee</servlet-name>
+        <servlet-class>controller.employee.UpdateEmployee</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddSite</servlet-name>
         <url-pattern>/add-site</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>DeleteEmployee</servlet-name>
         <url-pattern>/delete-employee</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateEmployee</servlet-name>
+        <url-pattern>/update-employee</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>home.jsp</welcome-file>

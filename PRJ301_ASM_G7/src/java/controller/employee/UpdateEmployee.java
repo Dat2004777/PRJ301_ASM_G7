@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
 package controller.employee;
 
 import java.io.IOException;
@@ -15,9 +19,9 @@ import test.ParkingSiteFakeDB;
  *
  * @author Admin
  */
-public class AddEmployee extends HttpServlet {
+public class UpdateEmployee extends HttpServlet {
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -29,13 +33,18 @@ public class AddEmployee extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        EmployeeFakeDB empDAO = EmployeeFakeDB.getInstance();
+        
+        String empId = request.getParameter("id");
+        Employee emp = empDAO.getById(empId);     
+        request.setAttribute("emp", emp);
+        
         ParkingSiteFakeDB siteDAO = ParkingSiteFakeDB.getInstance();
-
+        
         List<ParkingSite> siteList = siteDAO.getAll();
-
         request.setAttribute("listSites", siteList);
-
-        request.getRequestDispatcher("/manager/employee/add-employee.jsp").forward(request, response);
+        
+        request.getRequestDispatcher("/manager/employee/update-employee.jsp").forward(request, response);
     }
 
     /**
@@ -52,17 +61,16 @@ public class AddEmployee extends HttpServlet {
         EmployeeFakeDB empDAO = EmployeeFakeDB.getInstance();
 
         try {
+            String empId = request.getParameter("employeeId");
             String accountId = request.getParameter("accountId");
             String lastName = request.getParameter("lastName");
             String firstName = request.getParameter("firstName");
             String phone = request.getParameter("phone");
             String siteId = request.getParameter("siteId");
             
-            String empId = "EMP" + accountId;
-            
             Employee newEmp = new Employee(empId, accountId, firstName, lastName, phone, siteId);
 
-            empDAO.add(newEmp);
+            empDAO.update(newEmp);
             
             response.sendRedirect("list-employee");
             
@@ -70,7 +78,7 @@ public class AddEmployee extends HttpServlet {
             e.printStackTrace();
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Lỗi thêm mới");
         }
-
     }
+
 
 }

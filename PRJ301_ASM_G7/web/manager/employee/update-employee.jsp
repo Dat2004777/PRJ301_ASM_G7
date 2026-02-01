@@ -25,7 +25,7 @@
         <div class="form-card">
             <h2 class="form-title">Cập nhật: ${emp.fullName}</h2>
 
-            <form action="employee-update" method="post">
+            <form action="update-employee" method="post">
                 <input type="hidden" name="employeeId" value="${emp.employeeId}">
 
                 <div class="form-group">
