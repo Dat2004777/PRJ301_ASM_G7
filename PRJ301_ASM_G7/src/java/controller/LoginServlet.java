@@ -76,7 +76,6 @@ public class LoginServlet extends HttpServlet{
     throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        AccountTest accTest = new AccountTest();
         HttpSession session = request.getSession();
         AccountDAO accDAO = new AccountDAO();
         Account acc = accDAO.checkAccount(username, password);
@@ -84,14 +83,18 @@ public class LoginServlet extends HttpServlet{
             session.setAttribute("account",acc);
             session.setAttribute("acc_username", acc.getUsername());
             String contextPath = request.getContextPath();
-            if(acc.getRole() == RoleEnum.ADMIN){
-                response.sendRedirect("login");
-            }else if (acc.getRole() == RoleEnum.STAFF) {
-                response.sendRedirect("login");
-            }else{
-                response.sendRedirect(contextPath);
+            switch(acc.getRole()){
+                case ADMIN:
+                    response.sendRedirect("login");
+                    return;
+                case STAFF:
+                    response.sendRedirect("login");
+                    return;
+                case CUSTOMER:
+                    response.sendRedirect(contextPath);
+                    return;
+                          
             }
-            return;
         }
 
         request.setAttribute("errorMessage","Hãy đăng nhập lại");
