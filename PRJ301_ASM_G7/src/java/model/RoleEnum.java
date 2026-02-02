@@ -13,9 +13,9 @@ public enum RoleEnum {
     STAFF,
     CUSTOMER;
     
-//    public static RoleEnum from(String value) {
-//        return value == null
-//            ? null
-//            : RoleEnum.valueOf(value.trim().toUpperCase());
-//    }
+    public static RoleEnum from(String value) {
+        return value == null
+            ? null
+            : RoleEnum.valueOf(value.trim().toUpperCase());
+    }
 }
