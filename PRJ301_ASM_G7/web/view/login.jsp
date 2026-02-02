@@ -44,10 +44,10 @@
                 <div class="d-flex flex-column flex-md-row justify-content-between gap-2 small mb-4">
 
                     <!--Back to homepage-->
-                    <a href="#" class="text-decoration-none text-primary">
+                    <a href="${pageContext.request.contextPath}" class="text-decoration-none text-primary">
                         ← Quay lại trang chủ
                     </a>
-                    
+
                     <!--Forget password + Sign up-->
                     <div class="text-md-end">
                         <a href="#" class="d-block text-decoration-none text-primary">
@@ -58,12 +58,17 @@
                         </a>
                     </div>
                 </div>
-                
+
                 <!--Button-->
                 <button class="btn btn-primary w-100 py-2">
                     Đăng nhập
                 </button>
             </form>
+            <!--Error message-->
+            <div class="text-center mt-3">
+                <span class="text-danger fw-semibold">${errorMessage}</span>
+            </div>
+
         </div>
     </body>
 </html>
