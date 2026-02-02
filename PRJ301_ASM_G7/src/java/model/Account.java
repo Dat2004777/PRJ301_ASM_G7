@@ -16,10 +16,9 @@ public class Account {
     
     public Account(){}
     
-    public Account(int account_id, String username,String password, RoleEnum role){
+    public Account(int account_id, String username, RoleEnum role){
         this.account_id = account_id;
         this.username = username;
-        this.password = password;
         this.role = role;
     }
 
@@ -39,13 +38,6 @@ public class Account {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public RoleEnum getRole() {
         return role;
@@ -55,10 +47,5 @@ public class Account {
         this.role = role;
     }
 
-    @Override
-    public String toString() {
-        return "Account{" + "account_id=" + account_id + ", username=" + username + ", password=" + password + ", role=" + role + '}';
-    }
-    
     
 }
