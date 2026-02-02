@@ -5,6 +5,7 @@
 
 package controller;
 
+import dal.AccountDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,13 +14,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Account;
+import model.RoleEnum;
 import test.AccountTest;
 
 /**
  *
  * @author ADMIN
  */
-public class LoginServlet extends HttpServlet {
+public class LoginServlet extends HttpServlet{
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -56,10 +58,10 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-         HttpSession session = request.getSession();
-         String acc_username = (String) session.getAttribute("acc_username");
-         request.setAttribute("username", acc_username);
-        request.getRequestDispatcher("login.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        String acc_username = (String) session.getAttribute("acc_username");
+        request.setAttribute("username", acc_username);
+        request.getRequestDispatcher("view/login.jsp").forward(request, response);
     } 
 
     /** 
@@ -76,16 +78,25 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         AccountTest accTest = new AccountTest();
         HttpSession session = request.getSession();
-        
-        for(Account acc : accTest.getAccount()){
-            if(acc.getUsername().equals(username) && acc.getPassword().equals(password)){
-                session.setAttribute("account", acc);
-                response.sendRedirect("home.jsp");
-                return;
+        AccountDAO accDAO = new AccountDAO();
+        Account acc = accDAO.checkAccount(username, password);
+        if(acc != null){
+            session.setAttribute("account",acc);
+            session.setAttribute("acc_username", acc.getUsername());
+            String contextPath = request.getContextPath();
+            if(acc.getRole() == RoleEnum.ADMIN){
+                response.sendRedirect("login");
+            }else if (acc.getRole() == RoleEnum.STAFF) {
+                response.sendRedirect("login");
+            }else{
+                response.sendRedirect(contextPath);
             }
+            return;
         }
+
+        request.setAttribute("errorMessage","Hãy đăng nhập lại");
         request.setAttribute("username", username);
-        request.getRequestDispatcher("login.jsp").forward(request, response);
+        request.getRequestDispatcher("view/login.jsp").forward(request, response);
     }
 
     /** 
