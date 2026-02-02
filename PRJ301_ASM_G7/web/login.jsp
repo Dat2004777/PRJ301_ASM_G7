@@ -24,7 +24,7 @@
             </h2>
 
             <!--Login form-->
-            <form action="#" method="post">
+            <form action="login" method="post">
 
                 <!--Username Input-->
                 <div class="mb-3 mb-md-4">
