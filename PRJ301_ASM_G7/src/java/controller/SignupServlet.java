@@ -5,6 +5,7 @@
 package controller;
 
 import dal.AccountDAO;
+import dal.CustomerDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -80,12 +81,13 @@ public class SignupServlet extends HttpServlet {
         String lastname = request.getParameter("lastname");
 
         AccountDAO accDAO = new AccountDAO();
-
+        CustomerDAO customerDAO = new CustomerDAO();
+        
         boolean isUsernameExist = accDAO.getUsername(username);
         boolean isPasswordMismatch = !password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$") && !password.equals(confirmPass);
         boolean isEmailMismatch = !Validate.checkEmail(email);
         boolean isPhoneMismatch = !Validate.checkPhone(phone);
-        System.out.println(isUsernameExist);
+
         // ===== GỮ GIÁ TRỊ NHẬP LẠI =====
         request.setAttribute("username", username);
         request.setAttribute("email", email);
@@ -122,7 +124,8 @@ public class SignupServlet extends HttpServlet {
         }
 
         // ===== ĐĂNG KÝ THÀNH CÔNG =====
-//        accDAO.insertAccount(username, password, email, phone, firstname, lastname);
+        int acc_id = accDAO.insertAccount(username, password, "customer");
+        customerDAO.insertCustomer(firstname, lastname, phone, email, acc_id);
 
         response.sendRedirect(request.getContextPath() + "/signup?success=true");
     }
