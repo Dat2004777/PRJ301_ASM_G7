@@ -24,12 +24,19 @@
                 Đăng ký
             </h2>
 
-            <form>
+            <form action="signup" method="post">
                 <!-- Username -->
                 <div class="mb-3 mb-md-4">
                     <label class="form-label text-info fw-bold">Username</label>
-                    <input type="text" class="form-control bg-input border-0 py-2" 
-                           placeholder="Tên đăng nhập" name="username" value="${username}" required>
+                    <input type="text"
+                           id="username"
+                           class="form-control bg-input border-0 py-2"
+                           placeholder="Tên đăng nhập"
+                           name="username"
+                           value="${username}"
+                           required>
+
+                    <span id="usernameError" class="text-danger d-block mt-2">${errorUsername}</span>
                 </div>
 
                 <!-- Password -->
@@ -37,6 +44,7 @@
                     <label class="form-label text-info fw-semibold">Password</label>
                     <input type="password" class="form-control bg-input border-0 py-2" 
                            placeholder="Mật khẩu" name="password_1" required>
+                    <span class="text-danger d-block mt-2">${errorPass}</span>
                 </div>
 
                 <!-- Confirm Password -->
@@ -51,13 +59,16 @@
                     <label class="form-label text-info fw-semibold">Email</label>
                     <input type="text" class="form-control bg-input border-0 py-2" 
                            placeholder="Email" name="email" required>
+                    <span class="text-danger d-block mt-2">${errorEmail}</span>
                 </div>
 
                 <!-- Phone -->
                 <div class="mb-3 mb-md-4">
                     <label class="form-label text-info fw-semibold">Phone</label>
                     <input type="text" class="form-control bg-input border-0 py-2" 
-                           placeholder="Phone" name="phone">
+                           placeholder="Phone" name="phone" required>
+                    
+                    <span class="text-danger d-block mt-2">${errorPhone}</span>
                 </div>
                 <div class="row">
                     <!-- First name -->
@@ -80,16 +91,13 @@
                      justify-content-between gap-2
                      small mb-4">
 
-                    <a href="#" class="text-decoration-none text-primary">
+                    <a href="${pageContext.request.contextPath}" class="text-decoration-none text-primary">
                         ← Quay lại trang chủ
                     </a>
 
                     <div class="text-md-center">
-                        <a href="#" class="d-block text-decoration-none text-primary">
-                            Đã có tài khoản
-                        </a>
                         <a href="login" class="d-block text-decoration-none text-primary">
-                            Đăng nhập
+                            Đã có tài khoản đăng nhập
                         </a>
                     </div>
                 </div>
@@ -101,6 +109,6 @@
             </form>
 
         </div>
-
+        <script src="${pageContext.request.contextPath}/assests/js/signup.js"></script>
     </body>
 </html>
