@@ -42,33 +42,34 @@
                 <!-- Password -->
                 <div class="mb-3 mb-md-4">
                     <label class="form-label text-info fw-semibold">Password</label>
-                    <input type="password" class="form-control bg-input border-0 py-2" 
+                    <input id="password" type="password" class="form-control bg-input border-0 py-2" 
                            placeholder="Mật khẩu" name="password_1" required>
-                    <span class="text-danger d-block mt-2">${errorPass}</span>
+                    <span id="passwordError" class="text-danger d-block mt-2">${errorPass}</span>
                 </div>
 
                 <!-- Confirm Password -->
                 <div class="mb-3 mb-md-4">
                     <label class="form-label text-info fw-semibold">Confirm Password</label>
-                    <input type="password" class="form-control bg-input border-0 py-2" 
+                    <input id="confirmPassword" type="password" class="form-control bg-input border-0 py-2" 
                            placeholder="Mật khẩu" name="password_2"  required>
+                    <span id="confirmPasswordError" class="text-danger d-block mt-2">${errorPassConfirm}</span>
                 </div>
 
                 <!-- Email -->
                 <div class="mb-3 mb-md-4">
                     <label class="form-label text-info fw-semibold">Email</label>
-                    <input type="text" class="form-control bg-input border-0 py-2" 
+                    <input id="email" type="text" class="form-control bg-input border-0 py-2" 
                            placeholder="Email" name="email" required>
-                    <span class="text-danger d-block mt-2">${errorEmail}</span>
+                    <span id="emailError" class="text-danger d-block mt-2">${errorEmail}</span>
                 </div>
 
                 <!-- Phone -->
                 <div class="mb-3 mb-md-4">
                     <label class="form-label text-info fw-semibold">Phone</label>
-                    <input type="text" class="form-control bg-input border-0 py-2" 
+                    <input id="phone" type="text" class="form-control bg-input border-0 py-2" 
                            placeholder="Phone" name="phone" required>
-                    
-                    <span class="text-danger d-block mt-2">${errorPhone}</span>
+
+                    <span id="phoneError" class="text-danger d-block mt-2">${errorPhone}</span>
                 </div>
                 <div class="row">
                     <!-- First name -->
@@ -109,6 +110,7 @@
             </form>
 
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="${pageContext.request.contextPath}/assests/js/signup.js"></script>
     </body>
 </html>

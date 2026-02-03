@@ -82,7 +82,7 @@ public class SignupServlet extends HttpServlet {
         AccountDAO accDAO = new AccountDAO();
 
         boolean isUsernameExist = accDAO.getUsername(username);
-        boolean isPasswordMismatch = !password.equals(confirmPass);
+        boolean isPasswordMismatch = !password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$") && !password.equals(confirmPass);
         boolean isEmailMismatch = !Validate.checkEmail(email);
         boolean isPhoneMismatch = !Validate.checkPhone(phone);
         System.out.println(isUsernameExist);
@@ -100,7 +100,7 @@ public class SignupServlet extends HttpServlet {
 
         // ===== CHECK PASSWORD =====
         if (isPasswordMismatch) {
-            request.setAttribute("errorPass", "Mật khẩu không khớp!");
+            request.setAttribute("errorPassConfirm", "Mật khẩu không khớp!");
             hasError = true;
         }
         
@@ -124,7 +124,7 @@ public class SignupServlet extends HttpServlet {
         // ===== ĐĂNG KÝ THÀNH CÔNG =====
 //        accDAO.insertAccount(username, password, email, phone, firstname, lastname);
 
-        response.sendRedirect(request.getContextPath() + "/login");
+        response.sendRedirect(request.getContextPath() + "/signup?success=true");
     }
 
     /**
