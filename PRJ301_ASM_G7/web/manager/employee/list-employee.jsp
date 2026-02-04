@@ -22,6 +22,9 @@
             transform: translateY(-5px);
             box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important; /* shadow-lg */
         }
+        
+        
+        
     </style>
 </head>
 
@@ -32,7 +35,7 @@
             <%@include file="/components/sidebar.jsp" %>
         </div>
         
-        <div>
+        <div class="container-fluid">
             <div class="container py-4">
         
         <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-4">

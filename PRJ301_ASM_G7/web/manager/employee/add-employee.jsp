@@ -63,7 +63,7 @@
                 </div>
 
                 <div class="btn-group">
-                    <a href="employee-list" class="btn btn-cancel">Quay lại</a>
+                    <a href="list-employee" class="btn btn-cancel">Quay lại</a>
                     <button type="submit" class="btn btn-save">Lưu nhân viên</button>
                 </div>
             </form>

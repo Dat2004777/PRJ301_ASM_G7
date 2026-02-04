@@ -4,6 +4,14 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assests/css/main.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assests/css/components/adminSideBar.css" />
 
+<style>
+    .logo-img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+    }
+</style>
+
 <div>
     <nav class="navbar navbar-dark bg-dark d-lg-none">
         <div class="container-fluid">
@@ -38,7 +46,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#!" class="nav-link text-white">
+                        <a href="list-site" class="nav-link text-white">
                             <svg class="bi me-2" width="16" height="16">
                             <use xlink:href="#speedometer2" />
                             </svg>
@@ -46,7 +54,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#!" class="nav-link text-white">
+                        <a href="list-employee" class="nav-link text-white">
                             <svg class="bi me-2" width="16" height="16">
                             <use xlink:href="#table" />
                             </svg>
