@@ -4,12 +4,15 @@
  */
 package controller.site;
 
+import dal.EmployeeDAO;
 import dal.SiteDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
+import model.Employee;
 import model.ParkingSite;
 import utils.HttpUtils;
 
@@ -24,18 +27,21 @@ public class UpdateSite extends HttpServlet {
             throws ServletException, IOException {
 
         SiteDAO siteDAO = new SiteDAO();
-
+        EmployeeDAO empDAO = new EmployeeDAO();
+        
         String idStr = request.getParameter("id");
         int id = HttpUtils.toInt(idStr);
 
         ParkingSite site = siteDAO.getById(id);
+        List<Employee> empList = empDAO.getAll();
 
         if (site == null) {
-            response.sendRedirect("site-list");
+            response.sendRedirect("list-site");
             return;
         }
-
+        request.setAttribute("empList", empList);
         request.setAttribute("site", site);
+        
         request.getRequestDispatcher("/manager/site/update-site.jsp").forward(request, response);
     }
 
@@ -51,7 +57,7 @@ public class UpdateSite extends HttpServlet {
             String address = request.getParameter("address");
             String regionStr = request.getParameter("region");
             String statusStr = request.getParameter("status");
-            String managerIdStr = request.getParameter("managerId");
+            String managerIdStr = request.getParameter("manager");
 
             int id = HttpUtils.toInt(idStr);
             int managerId = HttpUtils.toInt(managerIdStr);

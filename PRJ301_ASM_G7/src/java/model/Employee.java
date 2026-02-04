@@ -79,4 +79,9 @@ public class Employee {
     public void setSiteId(int siteId) {
         this.siteId = siteId;
     }
+    
+    public String getName () {
+        return firstName + " " + lastName;
+    }
+    
 }

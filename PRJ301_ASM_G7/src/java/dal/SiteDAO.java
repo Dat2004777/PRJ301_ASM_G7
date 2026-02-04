@@ -48,19 +48,18 @@ public class SiteDAO extends DBContext {
     }
 
     public void add(ParkingSite site) {
-        String sql = "INSERT INTO ParkingSites (site_id, site_name, address, region, status, manager_id) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO ParkingSites (site_name, address, region,manager_id, status) VALUES (?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             
-            ps.setInt(1, site.getSiteId());
-            ps.setString(2, site.getSiteName());
-            ps.setString(3, site.getAddress());
+            ps.setString(1, site.getSiteName());
+            ps.setString(2, site.getAddress());
             
-            ps.setString(4, site.getRegion().name()); 
+            ps.setString(3, site.getRegion().name()); 
+            
+            ps.setInt(4, site.getManagerId()); 
             ps.setString(5, site.getSiteStatus().name());
             
-            ps.setInt(6, site.getManagerId()); 
-
             ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Error add: " + e.getMessage());

@@ -134,6 +134,15 @@
                         <input type="text" name="address" class="form-input" 
                                placeholder="Ví dụ: Lô E2a-7, Đường D1..." required>
                     </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Quản lý</label>
+                        <select name="manager" class="form-input">
+                            <c:forEach items="${empList}" var="emp">
+                                <option value="${emp.employeeId}">${emp.name}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
 
                     <div class="form-group">
                         <label class="form-label">Trạng thái ban đầu</label>

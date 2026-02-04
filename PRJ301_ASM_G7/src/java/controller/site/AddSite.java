@@ -1,5 +1,6 @@
 package controller.site;
 
+import dal.EmployeeDAO;
 import dal.SiteDAO;
 import model.ParkingSite;
 import java.io.IOException;
@@ -7,6 +8,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
+import model.Employee;
 import utils.HttpUtils;
 
 public class AddSite extends HttpServlet {
@@ -15,6 +18,12 @@ public class AddSite extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        EmployeeDAO empDAO = new EmployeeDAO();
+
+        List<Employee> empList = empDAO.getAll();
+        
+        request.setAttribute("empList", empList);
+        
         request.getRequestDispatcher("/manager/site/add-site.jsp").forward(request, response);
     }
 
@@ -30,7 +39,7 @@ public class AddSite extends HttpServlet {
             String address = request.getParameter("address");
             String regionStr = request.getParameter("region");
             String statusStr = request.getParameter("status");
-            String managerIdStr = request.getParameter("managerId");
+            String managerIdStr = request.getParameter("manager");
 
             ParkingSite.Region region = ParkingSite.Region.valueOf(regionStr);
             ParkingSite.Status status = ParkingSite.Status.valueOf(statusStr);

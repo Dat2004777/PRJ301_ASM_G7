@@ -43,16 +43,15 @@ public class EmployeeDAO extends DBContext {
     }
 
     public void add(Employee emp) {
-        String sql = "INSERT INTO Employees (employee_id, account_id, firstname, lastname, phone, site_id) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Employees (account_id, firstname, lastname, phone, site_id) VALUES (?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             
-            ps.setInt(1, emp.getEmployeeId());
-            ps.setInt(2, emp.getAccountId());
-            ps.setString(3, emp.getFirstName());
-            ps.setString(4, emp.getLastName());
-            ps.setString(5, emp.getPhone());
-            ps.setInt(6, emp.getSiteId()); 
+            ps.setInt(1, emp.getAccountId());
+            ps.setString(2, emp.getFirstName());
+            ps.setString(3, emp.getLastName());
+            ps.setString(4, emp.getPhone());
+            ps.setInt(5, emp.getSiteId()); 
 
             ps.executeUpdate();
         } catch (SQLException e) {
