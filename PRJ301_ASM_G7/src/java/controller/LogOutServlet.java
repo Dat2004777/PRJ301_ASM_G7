@@ -5,7 +5,6 @@
 
 package controller;
 
-import dal.AccountDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,15 +12,12 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.Account;
-import model.RoleEnum;
-import test.AccountTest;
 
 /**
  *
  * @author ADMIN
  */
-public class LoginServlet extends HttpServlet{
+public class LogOutServlet extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -38,10 +34,10 @@ public class LoginServlet extends HttpServlet{
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginServlet</title>");  
+            out.println("<title>Servlet LogOutServlet</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet LoginServlet at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet LogOutServlet at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -57,8 +53,14 @@ public class LoginServlet extends HttpServlet{
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {        
-        request.getRequestDispatcher("view/login.jsp").forward(request, response);
+    throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        if(session.getAttribute("account") == null){
+            response.sendRedirect(request.getContextPath());
+            return;
+        }
+        session.removeAttribute("account");
+        response.sendRedirect(request.getContextPath());
     } 
 
     /** 
@@ -71,31 +73,7 @@ public class LoginServlet extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        HttpSession session = request.getSession();
-        AccountDAO accDAO = new AccountDAO();
-        Account acc = accDAO.checkAccount(username, password);
-        if(acc != null){
-            String contextPath = request.getContextPath();
-            switch(acc.getRole()){
-                case ADMIN:
-                    response.sendRedirect("login");
-                    return;
-                case STAFF:
-                    response.sendRedirect("login");
-                    return;
-                case CUSTOMER:
-                    session.setAttribute("account",acc);
-                    response.sendRedirect(contextPath);
-                    return;
-                          
-            }
-        }
-
-        request.setAttribute("errorMessage","Hãy đăng nhập lại");
-        request.setAttribute("username", username);
-        request.getRequestDispatcher("view/login.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /** 

@@ -35,34 +35,15 @@
 
                         <c:otherwise>
                             <div class="d-flex flex-column align-items-xl-end align-items-start">
-                                <h5 class="text-dark mb-0">Nguyễn Thành Đạt</h5>
-                                <button class="bg-primary border border-0 text-white fs-6 my-1 my-xl-0">Đăng xuất</button>
+                                <h5 class="text-dark mb-0">${sessionScope.account.username}</h5>
+                                <a href="logout" class="bg-primary border border-0 text-white fs-6 my-1 my-xl-0">Đăng xuất</a>
                             </div>
                             <div class="ms-xl-3 d-none d-xl-block">
                                 <img class="avt-img" src="${pageContext.request.contextPath}/assests/img/avt.jpg" alt="avatar">
                             </div> 
                         </c:otherwise>
                     </c:choose>
-                    <!--<div class="me-xl-2 my-2 my-xl-0">
-                            <a class="btn btn-outline-light rounded-3 w-100" href="login">Đăng nhập</a>
-                        </div>
-                        <div class="my-2 my-xl-0">
-                            <a class="btn btn-dark px-4 rounded-3 w-100" href="signup">Đăng ký</a>
-                        </div>-->
-
-                    <!-- login signup -->
-
-                    <!-- user signed -->
-
-                    <!-- <div class="d-flex flex-column align-items-xl-end align-items-start">
-                    <h5 class="text-dark mb-0">Nguyễn Thành Đạt</h5>
-                    <button class="bg-primary border border-0 text-white fs-6 my-1 my-xl-0">Đăng xuất</button>
-                </div>
-                <div class="ms-xl-3 d-none d-xl-block">
-                    <img class="avt-img" src="${pageContext.request.contextPath}/assests/img/avt.jpg" alt="avatar">
-                </div>  -->
-
-                    <!-- user signed -->
+                    
                 </div>
             </ul>
         </div>
