@@ -29,6 +29,6 @@ public class DetailSite extends HttpServlet {
         }
 
         request.setAttribute("site", site);
-        request.getRequestDispatcher("manager/site-detail.jsp").forward(request, response);
+        request.getRequestDispatcher("manager/site/site-detail.jsp").forward(request, response);
     }
 }

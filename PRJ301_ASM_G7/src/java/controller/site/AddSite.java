@@ -15,7 +15,7 @@ public class AddSite extends HttpServlet {
             throws ServletException, IOException {
         
 
-        request.getRequestDispatcher("/manager/add-site.jsp").forward(request, response);
+        request.getRequestDispatcher("/manager/site/add-site.jsp").forward(request, response);
     }
 
     

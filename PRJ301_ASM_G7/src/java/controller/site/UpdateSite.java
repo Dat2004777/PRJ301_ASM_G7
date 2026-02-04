@@ -33,7 +33,7 @@ public class UpdateSite extends HttpServlet {
         }
 
         request.setAttribute("site", site);
-        request.getRequestDispatcher("/manager/update-site.jsp").forward(request, response);
+        request.getRequestDispatcher("/manager/site/update-site.jsp").forward(request, response);
     }
 
     @Override
