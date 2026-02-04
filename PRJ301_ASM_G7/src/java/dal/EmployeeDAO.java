@@ -26,11 +26,11 @@ public class EmployeeDAO extends DBContext {
         return list;
     }
 
-    public Employee getById(String id) {
+    public Employee getById(int id) {
         String sql = "SELECT * FROM Employees WHERE employee_id = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1, id);
+            ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             
             if (rs.next()) {
@@ -78,24 +78,24 @@ public class EmployeeDAO extends DBContext {
         }
     }
 
-    public void delete(String id) {
+    public void delete(int id) {
         String sql = "DELETE FROM Employees WHERE employee_id = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1, id);
+            ps.setInt(1, id);
             ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Error EmployeeDAO.delete: " + e.getMessage());
         }
     }
 
-    public List<Employee> getBySiteId(String siteId) {
+    public List<Employee> getBySiteId(int siteId) {
         List<Employee> list = new ArrayList<>();
         String sql = "SELECT * FROM Employees WHERE site_id = ?";
         
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1, siteId);
+            ps.setInt(1, siteId);
             ResultSet rs = ps.executeQuery();
             
             while (rs.next()) {

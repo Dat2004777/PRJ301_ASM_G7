@@ -1,5 +1,6 @@
 package controller.site;
 
+import dal.SiteDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -7,7 +8,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 import model.ParkingSite;
-import test.ParkingSiteFakeDB;
 
 /**
  *
@@ -27,7 +27,8 @@ public class ListSite extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        ParkingSiteFakeDB siteDAO = ParkingSiteFakeDB.getInstance();
+        SiteDAO siteDAO = new SiteDAO();
+        
         List<ParkingSite> siteList = siteDAO.getAll();
 
         request.setAttribute("siteList", siteList);

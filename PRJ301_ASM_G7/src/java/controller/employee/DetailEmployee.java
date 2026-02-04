@@ -11,14 +11,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Employee;
-import test.EmployeeFakeDB;
+import utils.HttpUtils;
 
 /**
  *
  * @author Admin
  */
 public class DetailEmployee extends HttpServlet {
-
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -32,15 +31,17 @@ public class DetailEmployee extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         EmployeeDAO empDAO = new EmployeeDAO();
+
+        String empIdStr = request.getParameter("id");
         
-        String empId = request.getParameter("id");
-          
+        int empId = HttpUtils.toInt(empIdStr);
+        
         Employee emp = empDAO.getById(empId);
-        
+
         request.setAttribute("emp", emp);
-        
+
         request.getRequestDispatcher("/manager/employee/detail-employee.jsp").forward(request, response);
-        
+
     }
 
     /**
@@ -56,7 +57,5 @@ public class DetailEmployee extends HttpServlet {
             throws ServletException, IOException {
         doGet(request, response);
     }
-
-   
 
 }

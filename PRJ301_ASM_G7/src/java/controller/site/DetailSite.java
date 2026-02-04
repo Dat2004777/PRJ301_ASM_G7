@@ -1,12 +1,13 @@
 package controller.site;
 
+import dal.SiteDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.ParkingSite;
-import test.ParkingSiteFakeDB;
+import utils.HttpUtils;
 
 /**
  *
@@ -17,9 +18,11 @@ public class DetailSite extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
+        SiteDAO siteDAO = new SiteDAO();
         
-        String id = request.getParameter("id");
-        ParkingSiteFakeDB siteDAO = ParkingSiteFakeDB.getInstance();
+        String idStr = request.getParameter("id");
+        
+        int id = HttpUtils.toInt(idStr);
         
         ParkingSite site = siteDAO.getById(id);
         

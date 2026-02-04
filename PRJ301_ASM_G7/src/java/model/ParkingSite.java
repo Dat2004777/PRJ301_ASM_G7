@@ -10,14 +10,22 @@ package model;
  */
 public class ParkingSite {
 
-    private String siteId;
+    private int siteId;
     private String siteName;
     private String address;
     private Region region;
     private Status siteStatus;
-    private Employee managerId;
+    private int managerId;
 
-    public ParkingSite(String siteId, String siteName, String address, Region region, Status siteStatus, Employee managerId) {
+    public ParkingSite(String siteName, String address, Region region, Status siteStatus, int managerId) {
+        this.siteName = siteName;
+        this.address = address;
+        this.region = region;
+        this.siteStatus = siteStatus;
+        this.managerId = managerId;
+    }
+    
+    public ParkingSite(int siteId, String siteName, String address, Region region, Status siteStatus, int managerId) {
         this.siteId = siteId;
         this.siteName = siteName;
         this.address = address;
@@ -26,11 +34,11 @@ public class ParkingSite {
         this.managerId = managerId;
     }
 
-    public String getSiteId() {
+    public int getSiteId() {
         return siteId;
     }
 
-    public void setSiteId(String siteId) {
+    public void setSiteId(int siteId) {
         this.siteId = siteId;
     }
 
@@ -66,11 +74,11 @@ public class ParkingSite {
         this.siteStatus = siteStatus;
     }
 
-    public Employee getManagerId() {
+    public int getManagerId() {
         return managerId;
     }
 
-    public void setManagerId(Employee managerId) {
+    public void setManagerId(int getManagerId) {
         this.managerId = managerId;
     }
 

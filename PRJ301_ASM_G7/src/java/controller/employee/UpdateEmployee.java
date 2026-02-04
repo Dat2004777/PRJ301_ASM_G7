@@ -5,6 +5,7 @@
 package controller.employee;
 
 import dal.EmployeeDAO;
+import dal.SiteDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -13,8 +14,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 import model.Employee;
 import model.ParkingSite;
-import test.EmployeeFakeDB;
-import test.ParkingSiteFakeDB;
 import utils.HttpUtils;
 
 /**
@@ -35,13 +34,17 @@ public class UpdateEmployee extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        EmployeeFakeDB empDAO = EmployeeFakeDB.getInstance();
+        EmployeeDAO empDAO = new EmployeeDAO();
         
-        String empId = request.getParameter("id");
+        String empIdStr = request.getParameter("id");
+        
+        int empId = HttpUtils.toInt(empIdStr);
+        
         Employee emp = empDAO.getById(empId);     
+        
         request.setAttribute("emp", emp);
         
-        ParkingSiteFakeDB siteDAO = ParkingSiteFakeDB.getInstance();
+        SiteDAO siteDAO = new SiteDAO();
         
         List<ParkingSite> siteList = siteDAO.getAll();
         request.setAttribute("listSites", siteList);

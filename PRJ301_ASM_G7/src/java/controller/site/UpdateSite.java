@@ -4,13 +4,14 @@
  */
 package controller.site;
 
+import dal.SiteDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.ParkingSite;
-import test.ParkingSiteFakeDB;
+import utils.HttpUtils;
 
 /**
  *
@@ -21,12 +22,14 @@ public class UpdateSite extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        ParkingSiteFakeDB siteDAO = ParkingSiteFakeDB.getInstance();
-        
-        String id = request.getParameter("id");
+
+        SiteDAO siteDAO = new SiteDAO();
+
+        String idStr = request.getParameter("id");
+        int id = HttpUtils.toInt(idStr);
+
         ParkingSite site = siteDAO.getById(id);
-        
+
         if (site == null) {
             response.sendRedirect("site-list");
             return;
@@ -39,27 +42,31 @@ public class UpdateSite extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         request.setCharacterEncoding("UTF-8");
-        ParkingSiteFakeDB siteDAO = ParkingSiteFakeDB.getInstance();
+        SiteDAO siteDAO = new SiteDAO();
         try {
-            String id = request.getParameter("siteId"); // Input hidden
+            String idStr = request.getParameter("siteId"); // Input hidden
             String name = request.getParameter("siteName");
             String address = request.getParameter("address");
-            String regionStr = request.getParameter("region"); 
-            String statusStr = request.getParameter("status"); 
+            String regionStr = request.getParameter("region");
+            String statusStr = request.getParameter("status");
+            String managerIdStr = request.getParameter("managerId");
+
+            int id = HttpUtils.toInt(idStr);
+            int managerId = HttpUtils.toInt(managerIdStr);
 
             // 3. Chuyển đổi String sang Enum
             ParkingSite.Region region = ParkingSite.Region.valueOf(regionStr);
             ParkingSite.Status status = ParkingSite.Status.valueOf(statusStr);
 
             ParkingSite updatedSite = new ParkingSite(
-                id, 
-                name, 
-                address, 
-                region, 
-                status, 
-                null 
+                    id,
+                    name,
+                    address,
+                    region,
+                    status,
+                    managerId
             );
 
             siteDAO.update(updatedSite);

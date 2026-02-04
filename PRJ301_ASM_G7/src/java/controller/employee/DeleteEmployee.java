@@ -6,12 +6,11 @@ package controller.employee;
 
 import dal.EmployeeDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import test.EmployeeFakeDB;
+import utils.HttpUtils;
 
 /**
  *
@@ -34,8 +33,10 @@ public class DeleteEmployee extends HttpServlet {
             throws ServletException, IOException {
         EmployeeDAO empDAO = new EmployeeDAO();
         
-        String empId = request.getParameter("id");
-
+        String empIdStr = request.getParameter("id");
+        
+        int empId = HttpUtils.toInt(empIdStr);
+        
         empDAO.delete(empId);
         
         response.sendRedirect("list-employee");

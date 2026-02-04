@@ -1,6 +1,7 @@
 package controller.employee;
 
 import dal.EmployeeDAO;
+import dal.SiteDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -9,8 +10,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 import model.Employee;
 import model.ParkingSite;
-import test.EmployeeFakeDB;
-import test.ParkingSiteFakeDB;
 import utils.HttpUtils;
 
 /**
@@ -31,7 +30,7 @@ public class AddEmployee extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ParkingSiteFakeDB siteDAO = ParkingSiteFakeDB.getInstance();
+        SiteDAO siteDAO = new SiteDAO();
 
         List<ParkingSite> siteList = siteDAO.getAll();
 

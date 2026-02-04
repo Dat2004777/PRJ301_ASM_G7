@@ -1,51 +1,48 @@
 package controller.site;
 
+import dal.SiteDAO;
 import model.ParkingSite;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import test.ParkingSiteFakeDB;
+import utils.HttpUtils;
 
 public class AddSite extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
 
         request.getRequestDispatcher("/manager/site/add-site.jsp").forward(request, response);
     }
 
-    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         request.setCharacterEncoding("UTF-8");
-        ParkingSiteFakeDB siteDAO = ParkingSiteFakeDB.getInstance();
-        
+        SiteDAO siteDAO = new SiteDAO();
+
         try {
             String name = request.getParameter("siteName");
             String address = request.getParameter("address");
             String regionStr = request.getParameter("region");
             String statusStr = request.getParameter("status");
+            String managerIdStr = request.getParameter("managerId");
 
-            String newId = "SITE" + System.currentTimeMillis(); 
-            
-            
             ParkingSite.Region region = ParkingSite.Region.valueOf(regionStr);
             ParkingSite.Status status = ParkingSite.Status.valueOf(statusStr);
 
+            int managerId = HttpUtils.toInt(managerIdStr);
 
             ParkingSite newSite = new ParkingSite(
-                newId, 
-                name, 
-                address, 
-                region, 
-                status, 
-                null 
+                    name,
+                    address,
+                    region,
+                    status,
+                    managerId
             );
 
             siteDAO.add(newSite);
