@@ -4,6 +4,7 @@
  */
 package controller.employee;
 
+import dal.EmployeeDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -32,14 +33,13 @@ public class ListEmployee extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        EmployeeFakeDB empDAO = EmployeeFakeDB.getInstance();
+        EmployeeDAO empDAO = new EmployeeDAO();
         
         List<Employee> empList = empDAO.getAll();
         
         request.setAttribute("listEmployee", empList);
         
         request.getRequestDispatcher("/manager/employee/list-employee.jsp").forward(request, response);
-        
         
     }
 

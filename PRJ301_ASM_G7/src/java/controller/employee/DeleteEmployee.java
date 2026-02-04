@@ -4,6 +4,7 @@
  */
 package controller.employee;
 
+import dal.EmployeeDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -31,7 +32,7 @@ public class DeleteEmployee extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        EmployeeFakeDB empDAO = EmployeeFakeDB.getInstance();
+        EmployeeDAO empDAO = new EmployeeDAO();
         
         String empId = request.getParameter("id");
 

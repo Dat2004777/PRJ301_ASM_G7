@@ -47,12 +47,12 @@ public class EmployeeDAO extends DBContext {
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             
-            ps.setString(1, emp.getEmployeeId());
-            ps.setString(2, emp.getAccountId());
+            ps.setInt(1, emp.getEmployeeId());
+            ps.setInt(2, emp.getAccountId());
             ps.setString(3, emp.getFirstName());
             ps.setString(4, emp.getLastName());
             ps.setString(5, emp.getPhone());
-            ps.setString(6, emp.getSiteId()); 
+            ps.setInt(6, emp.getSiteId()); 
 
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -65,12 +65,12 @@ public class EmployeeDAO extends DBContext {
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             
-            ps.setString(1, emp.getAccountId());
+            ps.setInt(1, emp.getAccountId());
             ps.setString(2, emp.getFirstName());
             ps.setString(3, emp.getLastName());
             ps.setString(4, emp.getPhone());
-            ps.setString(5, emp.getSiteId());
-            ps.setString(6, emp.getEmployeeId());
+            ps.setInt(5, emp.getSiteId());
+            ps.setInt(6, emp.getEmployeeId());
 
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -109,12 +109,12 @@ public class EmployeeDAO extends DBContext {
     
     private Employee mapRowToEmployee(ResultSet rs) throws SQLException {
         return new Employee(
-            rs.getString("employee_id"),
-            rs.getString("account_id"),
+            rs.getInt("employee_id"),
+            rs.getInt("account_id"),
             rs.getString("firstname"), 
             rs.getString("lastname"),
             rs.getString("phone"),
-            rs.getString("site_id")   
+            rs.getInt("site_id")   
         );
     }
 }

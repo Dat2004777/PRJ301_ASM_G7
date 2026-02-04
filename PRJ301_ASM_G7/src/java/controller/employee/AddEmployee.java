@@ -1,5 +1,6 @@
 package controller.employee;
 
+import dal.EmployeeDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -10,6 +11,7 @@ import model.Employee;
 import model.ParkingSite;
 import test.EmployeeFakeDB;
 import test.ParkingSiteFakeDB;
+import utils.HttpUtils;
 
 /**
  *
@@ -49,18 +51,19 @@ public class AddEmployee extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        EmployeeFakeDB empDAO = EmployeeFakeDB.getInstance();
+        EmployeeDAO empDAO = new EmployeeDAO();
 
         try {
-            String accountId = request.getParameter("accountId");
+            String accountIdStr = request.getParameter("accountId");
             String lastName = request.getParameter("lastName");
             String firstName = request.getParameter("firstName");
             String phone = request.getParameter("phone");
-            String siteId = request.getParameter("siteId");
+            String siteIdStr = request.getParameter("siteId");
             
-            String empId = "EMP" + accountId;
+            int accountId = HttpUtils.toInt(accountIdStr);
+            int siteId = HttpUtils.toInt(siteIdStr);
             
-            Employee newEmp = new Employee(empId, accountId, firstName, lastName, phone, siteId);
+            Employee newEmp = new Employee(accountId, firstName, lastName, phone, siteId);
 
             empDAO.add(newEmp);
             
