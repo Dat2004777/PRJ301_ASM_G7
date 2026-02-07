@@ -33,14 +33,14 @@ public class DetailEmployee extends HttpServlet {
         EmployeeDAO empDAO = new EmployeeDAO();
 
         String empIdStr = request.getParameter("id");
-        
+
         int empId = HttpUtils.toInt(empIdStr);
-        
+
         Employee emp = empDAO.getById(empId);
 
         request.setAttribute("emp", emp);
 
-        request.getRequestDispatcher("/manager/employee/detail-employee.jsp").forward(request, response);
+        request.getRequestDispatcher("views/manager/employee/detail-employee.jsp").forward(request, response);
 
     }
 

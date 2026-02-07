@@ -18,8 +18,6 @@ import utils.HttpUtils;
  */
 public class DeleteEmployee extends HttpServlet {
 
-    
-
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -32,11 +30,11 @@ public class DeleteEmployee extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         EmployeeDAO empDAO = new EmployeeDAO();
-        
+
         String empIdStr = request.getParameter("id");
-        
+
         int empId = HttpUtils.toInt(empIdStr);
-        
+
         empDAO.delete(empId);
         
         response.sendRedirect("list-employee");
@@ -55,7 +53,5 @@ public class DeleteEmployee extends HttpServlet {
             throws ServletException, IOException {
         doGet(request, response);
     }
-
-    
 
 }

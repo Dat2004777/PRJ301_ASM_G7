@@ -12,11 +12,11 @@ public class EmployeeDAO extends DBContext {
     public List<Employee> getAll() {
         List<Employee> list = new ArrayList<>();
         String sql = "SELECT * FROM Employees";
-        
+
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            
+
             while (rs.next()) {
                 list.add(mapRowToEmployee(rs));
             }
@@ -32,7 +32,7 @@ public class EmployeeDAO extends DBContext {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
-            
+
             if (rs.next()) {
                 return mapRowToEmployee(rs);
             }
@@ -46,12 +46,12 @@ public class EmployeeDAO extends DBContext {
         String sql = "INSERT INTO Employees (account_id, firstname, lastname, phone, site_id) VALUES (?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
-            
+
             ps.setInt(1, emp.getAccountId());
             ps.setString(2, emp.getFirstName());
             ps.setString(3, emp.getLastName());
             ps.setString(4, emp.getPhone());
-            ps.setInt(5, emp.getSiteId()); 
+            ps.setInt(5, emp.getSiteId());
 
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -63,7 +63,7 @@ public class EmployeeDAO extends DBContext {
         String sql = "UPDATE Employees SET account_id = ?, firstname = ?, lastname = ?, phone = ?, site_id = ? WHERE employee_id = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
-            
+
             ps.setInt(1, emp.getAccountId());
             ps.setString(2, emp.getFirstName());
             ps.setString(3, emp.getLastName());
@@ -91,12 +91,12 @@ public class EmployeeDAO extends DBContext {
     public List<Employee> getBySiteId(int siteId) {
         List<Employee> list = new ArrayList<>();
         String sql = "SELECT * FROM Employees WHERE site_id = ?";
-        
+
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, siteId);
             ResultSet rs = ps.executeQuery();
-            
+
             while (rs.next()) {
                 list.add(mapRowToEmployee(rs));
             }
@@ -105,15 +105,15 @@ public class EmployeeDAO extends DBContext {
         }
         return list;
     }
-    
+
     private Employee mapRowToEmployee(ResultSet rs) throws SQLException {
         return new Employee(
-            rs.getInt("employee_id"),
-            rs.getInt("account_id"),
-            rs.getString("firstname"), 
-            rs.getString("lastname"),
-            rs.getString("phone"),
-            rs.getInt("site_id")   
+                rs.getInt("employee_id"),
+                rs.getInt("account_id"),
+                rs.getString("firstname"),
+                rs.getString("lastname"),
+                rs.getString("phone"),
+                rs.getInt("site_id")
         );
     }
 }

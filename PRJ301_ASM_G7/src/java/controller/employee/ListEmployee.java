@@ -38,7 +38,7 @@ public class ListEmployee extends HttpServlet {
         
         request.setAttribute("listEmployee", empList);
         
-        request.getRequestDispatcher("/manager/employee/list-employee.jsp").forward(request, response);
+        request.getRequestDispatcher("views/manager/employee/list-employee.jsp").forward(request, response);
         
     }
 

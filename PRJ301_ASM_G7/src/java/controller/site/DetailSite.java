@@ -16,22 +16,22 @@ import utils.HttpUtils;
 public class DetailSite extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         SiteDAO siteDAO = new SiteDAO();
-        
+
         String idStr = request.getParameter("id");
-        
+
         int id = HttpUtils.toInt(idStr);
-        
+
         ParkingSite site = siteDAO.getById(id);
-        
+
         if (site == null) {
-            response.sendRedirect("site-list"); 
+            response.sendRedirect("site-list");
             return;
         }
 
         request.setAttribute("site", site);
-        request.getRequestDispatcher("manager/site/site-detail.jsp").forward(request, response);
+        request.getRequestDispatcher("views/manager/site/detail-site.jsp").forward(request, response);
     }
 }

@@ -36,7 +36,7 @@ public class AddEmployee extends HttpServlet {
 
         request.setAttribute("listSites", siteList);
 
-        request.getRequestDispatcher("/manager/employee/add-employee.jsp").forward(request, response);
+        request.getRequestDispatcher("views/manager/employee/add-employee.jsp").forward(request, response);
     }
 
     /**
@@ -58,16 +58,16 @@ public class AddEmployee extends HttpServlet {
             String firstName = request.getParameter("firstName");
             String phone = request.getParameter("phone");
             String siteIdStr = request.getParameter("siteId");
-            
+
             int accountId = HttpUtils.toInt(accountIdStr);
             int siteId = HttpUtils.toInt(siteIdStr);
-            
+
             Employee newEmp = new Employee(accountId, firstName, lastName, phone, siteId);
 
             empDAO.add(newEmp);
-            
+
             response.sendRedirect("list-employee");
-            
+
         } catch (Exception e) {
             e.printStackTrace();
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Lỗi thêm mới");

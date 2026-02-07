@@ -28,7 +28,7 @@ public class UpdateSite extends HttpServlet {
 
         SiteDAO siteDAO = new SiteDAO();
         EmployeeDAO empDAO = new EmployeeDAO();
-        
+
         String idStr = request.getParameter("id");
         int id = HttpUtils.toInt(idStr);
 
@@ -41,8 +41,8 @@ public class UpdateSite extends HttpServlet {
         }
         request.setAttribute("empList", empList);
         request.setAttribute("site", site);
-        
-        request.getRequestDispatcher("/manager/site/update-site.jsp").forward(request, response);
+
+        request.getRequestDispatcher("views/manager/site/update-site.jsp").forward(request, response);
     }
 
     @Override

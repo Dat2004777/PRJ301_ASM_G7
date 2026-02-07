@@ -22,7 +22,6 @@ import utils.HttpUtils;
  */
 public class UpdateEmployee extends HttpServlet {
 
-
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -35,21 +34,21 @@ public class UpdateEmployee extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         EmployeeDAO empDAO = new EmployeeDAO();
-        
+
         String empIdStr = request.getParameter("id");
-        
+
         int empId = HttpUtils.toInt(empIdStr);
-        
-        Employee emp = empDAO.getById(empId);     
-        
+
+        Employee emp = empDAO.getById(empId);
+
         request.setAttribute("emp", emp);
-        
+
         SiteDAO siteDAO = new SiteDAO();
-        
+
         List<ParkingSite> siteList = siteDAO.getAll();
         request.setAttribute("listSites", siteList);
-        
-        request.getRequestDispatcher("/manager/employee/update-employee.jsp").forward(request, response);
+
+        request.getRequestDispatcher("views/manager/employee/update-employee.jsp").forward(request, response);
     }
 
     /**
@@ -72,22 +71,21 @@ public class UpdateEmployee extends HttpServlet {
             String firstName = request.getParameter("firstName");
             String phone = request.getParameter("phone");
             String siteIdStr = request.getParameter("siteId");
-            
+
             int empId = HttpUtils.toInt(empIdStr);
             int accountId = HttpUtils.toInt(accountIdStr);
             int siteId = HttpUtils.toInt(siteIdStr);
-            
+
             Employee newEmp = new Employee(empId, accountId, firstName, lastName, phone, siteId);
 
             empDAO.update(newEmp);
-            
+
             response.sendRedirect("list-employee");
-            
+
         } catch (Exception e) {
             e.printStackTrace();
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Lỗi thêm mới");
         }
     }
-
 
 }

@@ -21,10 +21,10 @@ public class AddSite extends HttpServlet {
         EmployeeDAO empDAO = new EmployeeDAO();
 
         List<Employee> empList = empDAO.getAll();
-        
+
         request.setAttribute("empList", empList);
-        
-        request.getRequestDispatcher("/manager/site/add-site.jsp").forward(request, response);
+
+        request.getRequestDispatcher("views/manager/site/add-site.jsp").forward(request, response);
     }
 
     @Override
