@@ -6,7 +6,6 @@ package dal;
 
 import java.sql.*;
 import java.time.LocalDateTime;
-import utils.HttpUtils;
 
 /**
  *
@@ -85,10 +84,6 @@ public class PaymentTransactionDAO extends DBContext {
         }
 
         return count;
-    }
-
-    public static void main(String[] args) {
-        System.out.println("Hello");
     }
 
 }
